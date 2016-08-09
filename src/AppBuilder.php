@@ -71,7 +71,7 @@ final class AppBuilder
         $symbolTable->setContainer(static::$container);
 
         // autoload configurations
-        static::$loader = new LoaderSet('application', new LoaderReflector($symbolTable));
+        static::$loader = new LoaderSet('application', new LoaderReflector($symbolTable), static::$container);
         static::$loader->setSymbolTable($symbolTable);
         static::$loader->import($loaders);
         static::$loader->loadAll()->configure();
