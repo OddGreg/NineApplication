@@ -37,7 +37,7 @@
         "oddgreg/nine-loaders"               : "dev-master",
         "oddgreg/nine-di"                    : "dev-master",
         "container-interop/container-interop": "^1.1",
-        "rdlowrey/auryn"                     : "1.2",
+        "rdlowrey/auryn"                     : "^1.2",
         "symfony/class-loader"               : "^3.1",
         "symfony/config"                     : "^3.1",
         "symfony/console"                    : "^3.1",
