@@ -1,0 +1,52 @@
+{
+    "name"             : "oddgreg/nine-application",
+    "description"      : "Core Application Classes for the Nine Framework",
+    "minimum-stability": "dev",
+    "prefer-stable"    : true,
+    "license"          : "MIT",
+    "authors"          : [
+        {
+            "name" : "Greg Truesdell",
+            "email": "odd.greg@gmail.com"
+        }
+    ],
+    "autoload"         : {
+        "classmap"             : [
+            "tests",
+            "src"
+        ],
+        "files"                : [
+            "src/Support/helpers.php"
+        ],
+        "psr-4"                : {
+            "Nine\\Application\\": "src"
+        }
+    },
+    "scripts"          : {
+        "test": "phpunit -c phpunit.xml"
+    },
+    "require"          : {
+        "php"                                : ">=7.0",
+        "container-interop/container-interop": "^1.1",
+        "rdlowrey/auryn"                     : "1.2",
+        "symfony/class-loader"               : "^3.1",
+        "symfony/config"                     : "^3.1",
+        "symfony/console"                    : "^3.1",
+        "symfony/http-foundation"            : "^3.1",
+        "symfony/http-kernel"                : "^3.1",
+        "oddgreg/nine-collections"           : "dev-master",
+        "oddgreg/nine-loaders"               : "dev-master",
+        "symfony/routing"                    : "^3.1",
+        "symfony/yaml"                       : "^3.1"
+    },
+    "require-dev"      : {
+        "ocramius/package-versions": "^1.1",
+        "symfony/security-csrf"    : "^3.1",
+        "symfony/security-guard"   : "^3.1",
+        "symfony/validator"        : "^3.1",
+        "tracy/tracy"              : "2.4.*",
+        "phpunit/phpunit"          : "5.4.*",
+        "psy/psysh"                : "@stable"
+
+    }
+}
