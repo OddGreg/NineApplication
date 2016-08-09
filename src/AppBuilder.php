@@ -68,6 +68,7 @@ final class AppBuilder
             // the current config class - at this point we don't know its class and don't care.
             get_class(static::$container) => ['type' => get_class(static::$container), 'value' => static::$container],
         ]);
+        $symbolTable->setContainer(static::$container);
 
         // autoload configurations
         static::$loader = new LoaderSet('application', new LoaderReflector($symbolTable));
