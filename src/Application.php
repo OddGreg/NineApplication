@@ -12,12 +12,6 @@ use Nine\Application\Containers\Contracts\ContainerCompatibilityInterface;
 use Nine\Application\Events\ApplicationRequestEvent;
 use Nine\Application\Events\ApplicationResponseEvent;
 use Nine\Application\Events\ApplicationTerminateEvent;
-use Nine\Application\Events\Listeners\ApplicationRequestListener;
-use Nine\Application\Events\Listeners\ApplicationResponseListener;
-use Nine\Application\Events\Listeners\ApplicationTerminateListener;
-use Nine\Application\Events\Listeners\ContentLengthListener;
-use Nine\Application\Events\Listeners\TokenListener;
-use Nine\Application\Handlers\ApplicationExceptionHandler;
 use Nine\Collections\Paths;
 use Nine\Loaders\ConfigFileReader;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -25,7 +19,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 use Symfony\Component\HttpKernel\Controller\ControllerResolver;
-use Symfony\Component\HttpKernel\EventListener\ExceptionListener;
 use Symfony\Component\Routing\RouteCollection;
 
 class Application extends Kernel
@@ -70,7 +63,6 @@ class Application extends Kernel
         $this->config             = $config;
         $this->controllerResolver = new ControllerResolver();
         $this->paths              = $paths;
-        //$this->routes             = $routes;
         #@formatter:on
 
         $this->kernel = parent::__construct($dispatcher, $routes, $this->controllerResolver, new ArgumentResolver);
@@ -89,16 +81,12 @@ class Application extends Kernel
      */
     public function addSubscribers()
     {
-        $this->dispatcher->addSubscriber(new ExceptionListener((new ApplicationExceptionHandler())->getHandler()));
-        $this->dispatcher->addSubscriber(new ContentLengthListener);
-        $this->dispatcher->addSubscriber(new ApplicationResponseListener);
-        $this->dispatcher->addSubscriber(new ApplicationRequestListener);
-        $this->dispatcher->addSubscriber(new ApplicationTerminateListener);
-        $this->dispatcher->addSubscriber(new TokenListener(['access' => '1234567890']));
+        //$this->dispatcher->addSubscriber(new ExceptionListener((new ApplicationExceptionHandler())->getHandler()));
+        //$this->dispatcher->addSubscriber(new ContentLengthListener);
     }
 
     /**
-     * @return ContainerCompatibilityInterface
+     * @return ContainerInterface
      */
     public function getContainer()
     {
@@ -134,7 +122,6 @@ class Application extends Kernel
             'dispatcher' => $this->dispatcher,
             'paths'      => $this->paths,
             'routes'     => $this->routeCollection,
-            //'routes'     => $this->routes,
             'matcher'    => $this->matcher,
         ];
     }

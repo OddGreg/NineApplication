@@ -74,7 +74,7 @@ return [
             ':charset' => 'UTF-8',
         ],
         Symfony\Component\HttpKernel\EventListener\ExceptionListener::class => [
-            ':controller' => Nine\Application\Controllers\ExceptionController::class . '::exceptionAction',
+            ':controller' => NULL, # Nine\Application\Controllers\ExceptionController::class . '::exceptionAction',
             ':logger'     => NULL,
         ],
     ],

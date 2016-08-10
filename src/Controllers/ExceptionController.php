@@ -9,7 +9,7 @@ class ExceptionController extends Controller
 {
     public function exceptionAction()
     {
-        ddump('an exception occurred');
+
     }
 
 }
